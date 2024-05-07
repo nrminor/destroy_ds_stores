@@ -6,7 +6,7 @@ However, wouldn't it be fun to also have an OP'd `.DS_Store` destroyer for when 
 
 ### Quick Start
 
-To install, make sure you have the Rust toolchain installed. Next, download the source code like so:
+To install, make sure you have [the Rust toolchain installed](https://www.rust-lang.org/tools/install). Next, download the source code like so:
 
 ```zsh
 git clone https://github.com/nrminor/destroy_ds_stores.git

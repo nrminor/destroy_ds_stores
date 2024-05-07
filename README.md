@@ -14,13 +14,13 @@ git clone https://github.com/nrminor/destroy_ds_stores.git
 
 Then, change into it with `cd destroy_ds_stores` and run:
 
-```
+```zsh
 cargo install --path=.
 ```
 
 This will compile the tool put `dds` on your system $PATH and make it available throughout your file system. Here's a quick look at what comes up when you run `dds -h`:
 
-```zsh
+```
 A command line tool that deletes the `.DS_Store` system files commonly found around MacOS filesystems.Please note that Finder may behave differently after running `dds`
 
 Usage: dds [OPTIONS] [DIR]

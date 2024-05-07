@@ -1,6 +1,5 @@
 #![crate_name = "dds"]
 
-use cli::Verbosity;
 use glob::glob;
 use rayon::prelude::*;
 use std::{
@@ -17,13 +16,9 @@ pub mod cli;
 /// # Errors
 ///
 /// This function will return an error if .
-pub fn bye_bye_ds_stores(
-    search_parent: &Path,
-    recursive: &bool,
-    verbose: &Verbosity,
-) -> Result<()> {
+pub fn bye_bye_ds_stores(search_parent: &Path, recursive: &bool, verbose: &bool) -> Result<()> {
     // log out information about what's being searched if verbose logging is turned on
-    if verbose == &Verbosity::Verbose {
+    if verbose == &true {
         let message = match recursive {
             true => format!("Destroying .DS_Store files in the current working directory, {:?}, and any subdirectories.", search_parent),
             false => format!(
@@ -47,6 +42,9 @@ pub fn bye_bye_ds_stores(
         .collect::<Vec<PathBuf>>()
         .into_par_iter()
         .for_each(|hit| {
+            if verbose == &true {
+                eprintln!("Deleting {}", &hit.to_string_lossy());
+            }
             if let Err(err) = fs::remove_file(&hit) {
                 eprintln!("Error deleting file {:?}: {}", hit, err);
             }

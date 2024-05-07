@@ -1,1 +1,9 @@
 /target
+/inputs
+/scratch
+/sandbox
+/data
+Cargo.lock
+
+.DS_Store
+._*

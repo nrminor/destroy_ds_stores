@@ -8,7 +8,7 @@ pub enum Verbosity {
 }
 
 /// A command line tool that deletes the `.DS_Store` system files commonly
-/// found around MacOS filesystems.Please note that Finder may behave differently
+/// found around MacOS filesystems. Please note that Finder may behave differently
 /// after running `dds`.
 #[derive(Parser)]
 #[clap(name = "dds")]

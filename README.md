@@ -18,7 +18,7 @@ Then, change into it with `cd destroy_ds_stores` and run:
 cargo install --path=.
 ```
 
-This will compile the tool put `dds` on your system $PATH and make it available throughout your file system. Here's a quick look at what comes up when you run `dds -h`:
+This will compile the tool and put `dds` on your user $PATH to make it available throughout your file system. Here's a quick look at what comes up when you run `dds -h`:
 
 ```
 A command line tool that deletes the `.DS_Store` system files commonly found around MacOS filesystems.Please note that Finder may behave differently after running `dds`

@@ -1,17 +1,15 @@
 [package]
-name = "destroy_ds_stores"
+name = "dds"
 version = "0.1.0"
 edition = "2021"
 license = "MIT"
 readme = "README.md"
 
-# See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
-
 [dependencies]
 clap = { version = "4.4.3", features = ["derive", "cargo"] }
-clap-verbosity-flag = "2.2.0"
 color-eyre = "0.6.3"
-derive-new = "0.6.0"
+glob = "0.3.1"
+rayon = "1.10.0"
 
 [profile.release]
 opt-level = "z"

@@ -15,6 +15,10 @@ pub struct Cli {
     #[arg(short, long, default_value_t = false)]
     pub recursive: bool,
 
+    /// Whether to perform a dry run where `.DS_Store` files are found but not deleted.
+    #[arg(short, long, default_value_t = false)]
+    pub dry: bool,
+
     /// The directory to search within for `.DS_Store` files
     #[arg(default_value = ".")]
     pub dir: String,

@@ -20,10 +20,11 @@ fn main() -> Result<()> {
 
     // separate out the two other runtime settings
     let recursive = &cli.recursive;
+    let dryrun = &cli.dry;
     let verbose = &cli.verbose;
 
     // do away with .DS_Store files based on those settings
-    bye_bye_ds_stores(&search_parent, recursive, verbose)?;
+    bye_bye_ds_stores(&search_parent, recursive, verbose, dryrun)?;
 
     // return Ok unit-value if everything worked
     Ok(())

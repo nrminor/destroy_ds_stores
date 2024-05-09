@@ -21,7 +21,7 @@ cargo install --path=.
 This will compile the tool and put `dds` on your user $PATH to make it available throughout your file system. Here's a quick look at what comes up when you run `dds -h`:
 
 ```
-A command line tool that deletes the `.DS_Store` system files commonly found around MacOS filesystems.Please note that Finder may behave differently after running `dds`
+A command line tool that deletes the `.DS_Store` system files commonly found around MacOS filesystems. Please note that Finder may behave differently after running `dds`
 
 Usage: dds [OPTIONS] [DIR]
 
@@ -29,10 +29,11 @@ Arguments:
   [DIR]  The directory to search within for `.DS_Store` files [default: .]
 
 Options:
-  -v, --verbose <VERBOSE>  Control the logging of detailed information as `dds` progresses [default: quiet] [possible values: quiet, normal, verbose]
-  -r, --recursive          Whether to search recursively in subdirectories of the provided search directory
-  -h, --help               Print help
-  -V, --version            Print version
+  -v, --verbose    Control the logging of detailed information as `dds` progresses
+  -r, --recursive  Whether to search recursively in subdirectories of the provided search directory
+  -d, --dry        Whether to perform a dry run where `.DS_Store` files are found but not deleted
+  -h, --help       Print help
+  -V, --version    Print version
 ```
 
 ### Disclaimer

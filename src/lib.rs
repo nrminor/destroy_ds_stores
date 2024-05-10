@@ -100,7 +100,7 @@ pub fn bye_bye_ds_stores(
             eprintln!("Deleting {}", &hit.to_string_lossy());
         }
         if let Err(err) = fs::remove_file(&hit) {
-            eprintln!("Error deleting file {:?}: {}", hit, err);
+            eprintln!("The file at {:?} could not be deleted, either because it is read-only to this user or it no longer exists: {}", hit, err);
         }
     });
     Ok(())

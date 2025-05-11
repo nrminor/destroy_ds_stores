@@ -5,11 +5,15 @@ use clap::Parser;
 /// after running `dds`.
 #[derive(Parser)]
 #[clap(name = "dds")]
-#[clap(version = "v0.1.0")]
+#[clap(version = "v0.2.0")]
 pub struct Cli {
-    /// Control the logging of detailed information as `dds` progresses
+    /// Increase the logging of detailed information as `dds` progresses
     #[arg(short, long, default_value_t = false)]
     pub verbose: bool,
+
+    /// Reduce the logging of detailed information as `dds` progresses
+    #[arg(short, long, default_value_t = false)]
+    pub quiet: bool,
 
     /// Whether to search recursively in subdirectories of the provided search directory.
     #[arg(short, long, default_value_t = false)]

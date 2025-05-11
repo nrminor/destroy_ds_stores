@@ -2,7 +2,7 @@ use std::path::PathBuf;
 
 use clap::Parser;
 use color_eyre::eyre::Result;
-use dds::{bye_bye_ds_stores, cli::Cli};
+use dds::{bye_bye_ds_stores, cli::Cli, Verbosity};
 
 fn main() -> Result<()> {
     let cli = Cli::parse();
@@ -22,9 +22,11 @@ fn main() -> Result<()> {
     let recursive = &cli.recursive;
     let dryrun = &cli.dry;
     let verbose = &cli.verbose;
+    let quiet = &cli.quiet;
+    let verbosity = Verbosity::new_from_bools(*verbose, *quiet);
 
     // do away with .DS_Store files based on those settings
-    bye_bye_ds_stores(&search_parent, recursive, verbose, dryrun)?;
+    bye_bye_ds_stores(&search_parent, recursive, verbosity, dryrun)?;
 
     // return Ok unit-value if everything worked
     Ok(())

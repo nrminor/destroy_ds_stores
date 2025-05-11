@@ -89,7 +89,8 @@ fn find_ds_stores(pattern: &str) -> Result<(Vec<PathBuf>, usize)> {
             hits.len()
         ));
 
-        // Implementing it this way would be much faster than constantly updating the terminal!
+        // Implementing it this way would be much faster than constantly updating the terminal (though
+        // ironically it would *feel* less fast because numbers aren't going brrrrrr)
         // ---------------------------------------------------------------------------------------
         // if searched % 100 == 0 {
         //     spinner.set_message(format!(
@@ -107,24 +108,6 @@ fn find_ds_stores(pattern: &str) -> Result<(Vec<PathBuf>, usize)> {
     Ok((hits, searched))
 }
 
-fn print_verbose_logging(
-    hit_count: usize,
-    recursive: &bool,
-    search_parent: &Path,
-    searched_dirs: &usize,
-) -> Result<()> {
-    let message = match recursive {
-            true => format!("Destroying {} .DS_Store files in the provided directory, {:?}, and all {} subdirectories.", hit_count, search_parent, searched_dirs),
-            false => format!(
-                "Destroying {} .DS_Store files in the provided directory, {:?}",
-                hit_count,
-                search_parent
-            ),
-        };
-    eprintln!("{}", message);
-    Ok(())
-}
-
 pub fn bye_bye_ds_stores(
     search_parent: &Path,
     recursive: &bool,
@@ -140,11 +123,6 @@ pub fn bye_bye_ds_stores(
     // find all .DS_Stores
     let (hits, searched_dirs) = find_ds_stores(&pattern)?;
     let num_hits = hits.len();
-
-    // log out information about what's being searched if verbose logging is turned on
-    if verbosity.is_not_quiet() {
-        print_verbose_logging(hits.len(), recursive, search_parent, &searched_dirs)?;
-    };
 
     // if a dry run is requested, early return
     if dryrun == &true {
@@ -176,11 +154,18 @@ pub fn bye_bye_ds_stores(
     });
 
     pb.finish();
-    eprintln!(
-        "{} .DS_Store files have been triumphally vanquished after searching far and wide amongst {} directories.",
-        num_hits,
-        searched_dirs,
-    );
+    let parting_message = if *recursive {
+        format!(
+            "{} .DS_Store files have been triumphally vanquished in {:?} and its {} subdirectories.",
+            num_hits, search_parent, searched_dirs,
+        )
+    } else {
+        format!(
+            "{} .DS_Store files have been triumphally vanquished in {:?}.",
+            num_hits, search_parent,
+        )
+    };
+    eprintln!("{parting_message}");
 
     Ok(())
 }

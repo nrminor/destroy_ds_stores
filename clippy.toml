@@ -1,0 +1,41 @@
+# Clippy configuration
+# This file configures the Clippy linter for the project
+
+# Set the MSRV (Minimum Supported Rust Version)
+msrv = "1.70.0"
+
+# Threshold configurations
+cognitive-complexity-threshold = 30
+too-many-arguments-threshold = 7
+type-complexity-threshold = 250
+single-char-binding-names-threshold = 4
+too-many-lines-threshold = 200
+array-size-threshold = 512000
+enum-variant-size-threshold = 200
+
+# Allow certain patterns that are common in this project
+allow-expect-in-tests = true
+allow-unwrap-in-tests = true
+allow-dbg-in-tests = true
+allow-print-in-tests = true
+
+# Documentation requirements
+missing-docs-in-crate-items = true
+
+# Enforce some additional restrictions
+disallowed-methods = [
+    # Prefer expect over unwrap for better error messages
+    { path = "std::option::Option::unwrap", reason = "use `expect` with a helpful message instead" },
+    { path = "std::result::Result::unwrap", reason = "use `expect` with a helpful message instead" },
+]
+
+# Paths to ignore for certain lints
+avoid-breaking-exported-api = false
+
+# Maximum line length for various lints
+max-fn-params-bools = 3
+max-struct-bools = 3
+
+# Enforce some good practices
+enforce-iter-loop-reborrow = true
+check-private-items = true

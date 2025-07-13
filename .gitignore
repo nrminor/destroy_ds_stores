@@ -1,9 +1,41 @@
-/target
-/inputs
-/scratch
-/sandbox
-/data
-Cargo.lock
+# Ignore everything by default
+*
 
-.DS_Store
-._*
+# Cargo project files
+!Cargo.toml
+!Cargo.lock
+
+# Source code - explicit files only
+!src/
+!src/main.rs
+!src/lib.rs
+!src/cli.rs
+!src/config.rs
+!src/cache.rs
+
+# Test scripts
+!tests/
+!tests/*.sh
+!tests/README.md
+
+# Documentation and metadata
+!README.md
+!LICENSE
+!CLAUDE.md
+
+# Development tools configuration
+!.pre-commit-config.yaml
+
+# Git configuration
+!.gitignore
+
+# Nix and development environment
+!flake.nix
+!flake.lock
+!.envrc
+!justfile
+
+# Rust configuration
+!rust-toolchain.toml
+!rustfmt.toml
+!clippy.toml

@@ -1,0 +1,7 @@
+# Rust toolchain configuration
+# This file ensures consistent Rust versions across all development environments
+
+[toolchain]
+channel = "stable"
+components = ["rustfmt", "clippy", "rust-src", "rust-analyzer"]
+profile = "default"
